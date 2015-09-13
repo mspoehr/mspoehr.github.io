@@ -1,3 +1,9 @@
+
+@font-face {
+    font-family: 'clockface'; /*a name to be used later*/
+    src: url('digital-7 (mono).ttf'); /*URL to font*/
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,12 +11,12 @@
 
 body {
   background: black;
-  font-family: 'Source Sans Pro'
+  font-family: 'clockface';
 }
 
 #countdown {
   color: #00FFFF;
-  font-size: 48px;
+  font-size: 100px;
     position: fixed;
     top: 50%;
     left: 50%;
