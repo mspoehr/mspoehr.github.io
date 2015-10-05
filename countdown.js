@@ -36,7 +36,7 @@ function Sound(source,volume,loop)
 }
 
 var music = new Sound("/final_countdown.mp3", 100, true)
-music.Start()
+music.start()
 
 var end = new Date('10/12/2015 12:0 AM');
 
