@@ -1,6 +1,6 @@
 music = new Audio("final_countdown.mp3")
 music.loop = true
-music.play()
+//music.play()
 
 paused = false
 
@@ -39,15 +39,24 @@ function showRemaining() {
     if (distance < 0) {
 
         clearInterval(timer);
-        document.getElementById('countdown').innerHTML = 'EXPIRED!';
+        document.getElementById('countdown').innerHTML = ':)';
 
         return;
     }
     var days = Math.floor(distance / _day);
     var hours = Math.floor((distance % _day) / _hour);
     var minutes = Math.floor((distance % _hour) / _minute);
-    var seconds = Math.floor((distance % _minute) / _second)
+    var seconds = Math.floor((distance % _minute) / _second);
     var millis = Math.floor((distance % _second));
+
+    _millisinday = 86400000
+    if (distance < _millisinday) {
+      percent = (distance / _millisinday) * 100;
+      p = Math.round(percent);
+      right = 100 - p;
+      document.getElementById('left').style.width = right +"%"
+      document.getElementById('right').style.width = p +"%"
+    }
 
     document.getElementById('countdown').innerHTML = days + ':';
     document.getElementById('countdown').innerHTML += leftPad(hours, 2) + ':';

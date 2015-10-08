@@ -10,18 +10,39 @@
 }
 
 body {
-  background: black;
   font-family: 'clockface';
+  background: black;
+}
+
+#right {
+  position: absolute;
+  right: 0px;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  margin: 0;
+  padding: 0;
+}
+
+#left {
+  position: absolute;
+  left: 0px;
+  height: 100%;
+  width: 0%;
+  background-color: green;
+  /*background-image: url('http://vignette2.wikia.nocookie.net/epicrapbattlesofhistory/images/e/e8/Jarvis-iron-man-wallpaper-android-40.jpg/revision/latest?cb=20140831193205');*/
+  margin: 0;
+  padding: 0;
 }
 
 #countdown {
   color: #00FFFF;
   font-size: 100px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 #pause {
