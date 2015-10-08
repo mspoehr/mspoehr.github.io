@@ -1,6 +1,6 @@
 music = new Audio("final_countdown.mp3")
 music.loop = true
-//music.play()
+music.play()
 
 paused = false
 
