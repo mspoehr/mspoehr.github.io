@@ -11,12 +11,14 @@
 
 body {
   font-family: 'clockface';
-  background: black;
+  background-image: url('image.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
-#right {
+#top {
   position: absolute;
-  right: 0px;
+  top: 0px;
   height: 100%;
   width: 100%;
   background-color: black;
@@ -24,13 +26,11 @@ body {
   padding: 0;
 }
 
-#left {
+#bottom {
   position: absolute;
-  left: 0px;
-  height: 100%;
-  width: 0%;
-  background-color: green;
-  /*background-image: url('http://vignette2.wikia.nocookie.net/epicrapbattlesofhistory/images/e/e8/Jarvis-iron-man-wallpaper-android-40.jpg/revision/latest?cb=20140831193205');*/
+  bottom: 0px;
+  height: 0%;
+  width: 100%;
   margin: 0;
   padding: 0;
 }
@@ -47,6 +47,17 @@ body {
 
 #pause {
   margin: 10px;
-  position: fixed;
+  position: absolute;
+  top: 0px;
+  left: 0px;
   color:white;
+}
+
+#canvas {
+  position: absolute;
+  margin: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }

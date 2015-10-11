@@ -1,6 +1,19 @@
+var end = new Date('10/12/2015 12:0 AM');
+
+var _milli = 1
+var _second = 1000;
+var _minute = _second * 60;
+var _hour = _minute * 60;
+var _day = _hour * 24;
+var timer;
+
 music = new Audio("final_countdown.mp3")
 music.loop = true
-music.play()
+
+var now = new Date();
+if (end - now > 0) {
+  music.play();
+}
 
 paused = false
 
@@ -16,15 +29,6 @@ function toggle_music() {
   paused = !paused
 }
 
-var end = new Date('10/12/2015 12:0 AM');
-
-var _milli = 1
-var _second = 1000;
-var _minute = _second * 60;
-var _hour = _minute * 60;
-var _day = _hour * 24;
-var timer;
-
 function leftPad(number, targetLength) {
     var output = number + '';
     while (output.length < targetLength) {
@@ -39,8 +43,10 @@ function showRemaining() {
     if (distance < 0) {
 
         clearInterval(timer);
-        document.getElementById('countdown').innerHTML = ':)';
+        document.getElementById('countdown').innerHTML = '18, baby!';
 
+        document.getElementById('bottom').style.height = "0%"
+        document.getElementById('top').style.height = "0%"
         return;
     }
     var days = Math.floor(distance / _day);
@@ -49,13 +55,13 @@ function showRemaining() {
     var seconds = Math.floor((distance % _minute) / _second);
     var millis = Math.floor((distance % _second));
 
-    _millisinday = 86400000
-    if (distance < _millisinday) {
-      percent = (distance / _millisinday) * 100;
+    _millisremaining = 7200000
+    if (distance < _millisremaining) {
+      percent = (distance / _millisremaining) * 100;
       p = Math.round(percent);
       right = 100 - p;
-      document.getElementById('left').style.width = right +"%"
-      document.getElementById('right').style.width = p +"%"
+      document.getElementById('bottom').style.height = right +"%"
+      document.getElementById('top').style.height = p +"%"
     }
 
     document.getElementById('countdown').innerHTML = days + ':';
