@@ -1,63 +1,61 @@
-
-@font-face {
-    font-family: 'clockface'; /*a name to be used later*/
-    src: url('digital-7 (mono).ttf'); /*URL to font*/
-}
-
 * {
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: 'clockface';
-  background-image: url('image.png');
+  /*font-family: 'clockface';*/
+  /*font-family: 'HelveticaNeue-Medium,"Helvetica Neue Medium","Helvetica Neue",Helvetica,Arial,sans-serif';*/
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0;
+  background-image: url('tree.jpg');
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 
-#top {
-  position: absolute;
-  top: 0px;
-  height: 100%;
-  width: 100%;
-  background-color: black;
-  margin: 0;
-  padding: 0;
+p {
+    color: white;
+    text-align: center;
+    font-size: 20px;
 }
 
-#bottom {
-  position: absolute;
-  bottom: 0px;
-  height: 0%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+#message div {
+  max-width: 900px;
 }
 
-#countdown {
-  color: #00FFFF;
-  font-size: 100px;
+.content {
+    font-weight: normal;
+  /*max-width: 900px;*/
+  /*left: calc(50% - 450px);*/
+  left: 40%;
+  max-width: 900px;
+  margin: auto;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+#message {
+  font-weight: 900;
+  background:rgba(0, 0, 0, 0.5);
   position: absolute;
+  width: 100%;
   top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  transform: translateY(-50%);
+  text-align: center;
+  padding: 15px 0;
 }
 
-#pause {
-  margin: 10px;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  color:white;
+#wish {
+  color: white;
+  text-align: center;
+  font-size: 100px;
+  top: 300px;
+  margin-bottom: 50px;
 }
 
-#canvas {
-  position: absolute;
-  margin: 0;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+#indent {
+  font-weight: normal;
+  margin-left: 200px;
+  font-weight: 700;
+  margin-bottom: 20px;
 }

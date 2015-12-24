@@ -1,14 +1,30 @@
 <html>
   <head>
     <link rel="stylesheet" href="style.css" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <title>Michael Spoehr</title>
-    <link rel="icon" type="image/x-icon" href="https://cdn2.iconfinder.com/data/icons/finance-solid-icons-vol-3/48/146-512.png" />
+    <link rel="icon" type="image/x-icon" href="610.png" />
   </head>
-  <div id="top"></div>
-  <div id="bottom"></div>
-  <div id="countdown" style='z-index: 2;'></div>
-  <canvas id="canvas" style='z-index: 1;'>Canvas is not supported in your browser.</canvas>
-  <a id="pause" href="javascript:toggle_music()" style="z-index: 3">MUTE</a>
-  <script src="countdown.js"></script>
-  <script src="fireworks.js"></script>
+  <body>
+    <div id="message">
+      <p id="wish"></p>
+      <p class="content"><b>6</b> For to us a child is born, to us a son is given, and the government
+will be on his shoulders. And he will be called Wonderful Counselor, Mighty God,
+Everlasting Father, Prince of Peace. <b>7</b> Of the increase of his government and
+peace there will be no end. He will reign on David's throne and over his
+kingdom, establishing and upholding it with justice and righteousness from that
+time on and forever. The zeal of the LORD Almighty will accomplish this.</p>
+<p id="indent">&mdash;Isaiah 9:6-7</p>
+<p class="content">Let us not forget the reason behind the season.  God bless
+you as we celebrate the birth of Jesus this holiday season.  I would like to
+wish you a Merry Christmas and a Happy New Year.</p>
+<p style="margin-left:400px"><i>&mdash;Michael Spoehr</i></p></div>
+  </body>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script src="merrychristmas.js"></script>
+  <script src="snowstorm-min.js"></script>
+  <script>
+  snowStorm.freezeOnBlur = true;
+  snowStorm.followMouse = false;
+  </script>
 </html>
