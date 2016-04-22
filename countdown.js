@@ -1,4 +1,5 @@
-var end = new Date('10/12/2015 12:0 AM');
+var end = new Date('05/19/2016 02:0 PM');
+console.log(end);
 
 var _milli = 1
 var _second = 1000;
@@ -37,13 +38,16 @@ function leftPad(number, targetLength) {
     return output;
 }
 
+console.log(end);
 function showRemaining() {
+    console.log(end);
     var now = new Date();
     var distance = end - now;
+    console.log(end);
     if (distance < 0) {
 
         clearInterval(timer);
-        document.getElementById('countdown').innerHTML = '18, baby!';
+        document.getElementById('countdown').innerHTML = 'done';
 
         document.getElementById('bottom').style.height = "0%"
         document.getElementById('top').style.height = "0%"
@@ -70,5 +74,5 @@ function showRemaining() {
     document.getElementById('countdown').innerHTML += leftPad(seconds, 2) + ':';
     document.getElementById('countdown').innerHTML += leftPad(millis, 3);
 }
-
+console.log(end);
 timer = setInterval(showRemaining, 1);
