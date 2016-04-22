@@ -21,7 +21,7 @@ body {
   top: 0px;
   height: 100%;
   width: 100%;
-  background-color: #660066;
+  background-color: #38006b;
   margin: 0;
   padding: 0;
 }
@@ -35,15 +35,33 @@ body {
   padding: 0;
 }
 
-#countdown {
+#content {
+  text-align: center;
   color: #FFF;
   font-size: 100px;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
+#content img {
+  padding-bottom: 10px;
+}
+
+#content p {
+  text-align: right;
+  font-size: 20px;
+}
+
+/*#cal {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}*/
 
 #pause {
   margin: 10px;
