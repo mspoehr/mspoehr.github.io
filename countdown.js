@@ -1,4 +1,4 @@
-var end = new Date('05/19/2016 10:20 AM');
+var end = new Date('05/19/2016 10:19 AM');
 console.log(end);
 
 var _milli = 1
