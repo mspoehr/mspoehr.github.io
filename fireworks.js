@@ -1,4 +1,4 @@
-var end = new Date('05/19/2016 02:37 PM');
+var end = new Date('05/19/2016 10:20 AM');
 
 // when animating on canvas, it is best to use requestAnimationFrame instead of setTimeout or setInterval
 // not supported in all browsers though and sometimes needs a prefix, so we need a shim

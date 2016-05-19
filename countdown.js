@@ -1,4 +1,4 @@
-var end = new Date('05/19/2016 02:37 PM');
+var end = new Date('05/19/2016 10:20 AM');
 console.log(end);
 
 var _milli = 1
@@ -47,10 +47,10 @@ function showRemaining() {
     if (distance < 0) {
 
         clearInterval(timer);
-        document.getElementById('countdown').innerHTML = 'done';
+        document.getElementById('content').innerHTML = '<img id="cal" src="white_cap.png" style=\'z-index: 4;\'/><div id="countdown">Class of 2k16</div>';
 
-        document.getElementById('bottom').style.height = "0%"
-        document.getElementById('top').style.height = "0%"
+        // document.getElementById('bottom').style.height = "0%"
+        // document.getElementById('top').style.height = "0%"
         return;
     }
     var days = Math.floor(distance / _day);
@@ -60,13 +60,13 @@ function showRemaining() {
     var millis = Math.floor((distance % _second));
 
     _millisremaining = 7200000
-    if (distance < _millisremaining) {
-      percent = (distance / _millisremaining) * 100;
-      p = Math.round(percent);
-      right = 100 - p;
-      document.getElementById('bottom').style.height = right +"%"
-      document.getElementById('top').style.height = p +"%"
-    }
+    // if (distance < _millisremaining) {
+    //   percent = (distance / _millisremaining) * 100;
+    //   p = Math.round(percent);
+    //   right = 100 - p;
+    //   document.getElementById('bottom').style.height = right +"%"
+    //   document.getElementById('top').style.height = p +"%"
+    // }
 
     document.getElementById('countdown').innerHTML = days + ':';
     document.getElementById('countdown').innerHTML += leftPad(hours, 2) + ':';
