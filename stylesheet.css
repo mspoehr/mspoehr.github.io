@@ -1,14 +1,22 @@
 body {
     background-color: #0192ba;
     font-family: sans-serif;
-    text-align: center;
+    /*text-align: center;*/
+}
+
+div {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
 }
 
 h1 {
     color: white;
-    position: relative;
+    /*position: absolute;
     top: 40%;
     display: inline-block;
-    margin: 0;
-
+    margin: 0;*/
 }
