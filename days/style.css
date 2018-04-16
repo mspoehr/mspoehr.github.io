@@ -29,6 +29,7 @@ span {
   transform: translate(-50%, -50%);
   line-height: 70px;
   text-align: center;
+  width: 600px;
 }
 
 #pause {
