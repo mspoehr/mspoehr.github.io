@@ -1,4 +1,4 @@
-var end = new Date('05/04/2018 5:00 PM');
+var end = new Date('05/03/2018 5:00 PM');
 
 var _milli = 1
 var _second = 1000;
