@@ -46,7 +46,8 @@ button {
   padding: 1em;
   font-size: 3.5em;
   font-weight: bold;
-  color: white; }
+  color: white;
+  transition: opacity 0.2s ease; }
 
 h1, h2, h3, h4, h5, h6, p, a {
   font-family: sans-serif;
@@ -101,7 +102,8 @@ h4 {
 
 .help, .switch {
   margin-left: 0.1em;
-  font-size: 1.4em; }
+  font-size: 1.4em;
+  transition: opacity 0.2s ease; }
 
 .help {
   color: white; }
@@ -131,10 +133,12 @@ table button {
 
 .foul {
   background: #E3E300;
-  color: #202020; }
+  color: #202020;
+  transition: opacity 0.2s ease; }
 
 .tech-foul {
-  background: #A80B00; }
+  background: #A80B00;
+  transition: opacity 0.2s ease; }
 
 .bottom-sticky {
   flex-shrink: 0;
@@ -223,6 +227,11 @@ hr {
   pointer-events: none;
   color: #202020; }
 
+/* I'm not sure about this being effective. */
+/*
+.upload:active, .foul:active, .tech-foul:active, .next-page:active, .undo:active, .help:active, .switch:active, .centered-page button:active {
+    opacity: 0.8;
+}*/
 input[type="range"] {
   margin: auto;
   -webkit-appearance: none;
@@ -392,7 +401,7 @@ var robot_2_crossed = false;
 
 // teleop
 var crosses = 0;
-var crosses_with_fuel = 0;
+var crosses_with_part = 0;
 var spare_part_approximation = 0;
 
 // endgame
@@ -520,12 +529,12 @@ function count_cross() {
     }});
 }
 
-function count_cross_with_fuel() {
-    crosses_with_fuel++;
-    $('.cross_with_fuel').html("Cross</br>w/ Fuel (" + crosses_with_fuel + ")");
+function count_cross_with_part() {
+    crosses_with_part++;
+    $('.cross_with_part').html("Cross</br>w/ Part (" + crosses_with_part + ")");
     $('.undo').show();
     undo_stack.push({ 'action': function() {
-        crosses_with_fuel--;
+        crosses_with_part--;
     }});
 }
 
@@ -538,7 +547,7 @@ function undo() {
     $('.foul').text("Foul (" + fouls + ")");
     $('.tech-foul').text("Tech Foul (" + tech_fouls + ")");
     $('.cross').text("Cross (" + crosses + ")");
-    $('.cross_with_fuel').html("Cross</br>w/ Fuel (" + crosses_with_fuel + ")");
+    $('.cross_with_part').html("Cross</br>w/ Part (" + crosses_with_part + ")");
     
     if (undo_stack.length == 0) {
         $('.undo').hide();
@@ -562,7 +571,7 @@ function reset() {
 
     // teleop
     crosses = 0;
-    crosses_with_fuel = 0;
+    crosses_with_part = 0;
     spare_part_approximation = 0;
 
     // endgame
@@ -576,10 +585,13 @@ function reset() {
     toggle_groups = {};
     undo_stack = [];
     
+    auto_attempts = 0;
+    auto_crosses = 0;
+    
     $('.foul').text("Foul (" + fouls + ")");
     $('.tech-foul').text("Tech Foul (" + tech_fouls + ")");
     $('.cross').text("Cross (" + crosses + ")");
-    $('.cross_with_fuel').html("Cross</br>w/ Fuel (" + crosses_with_fuel + ")");
+    $('.cross_with_part').html("Cross</br>w/ Part (" + crosses_with_part + ")");
     $('.highlightable').css("background", "");
     $(':input[type="range"]').val(0);
     $(".range-value").text(0);
@@ -592,6 +604,246 @@ function upload() {
     // TODO: upload logic
     
     reset();
+}
+            var auto_attempts = 0;
+var auto_crosses = 0;
+
+function goto_summary() {
+    if (robot_1_attempted) {
+        auto_attempts++;
+    }
+    if (robot_2_attempted) {
+        auto_attempts++;
+    }
+    
+    if (robot_1_crossed) {
+        auto_crosses++;
+    }
+    if (robot_2_crossed) {
+        auto_crosses++;
+    }
+    
+    if (wreckage_knocked_over == -1 || wreckage_knocked_over == null) {
+        wreckage_knocked_over = 4;
+    }
+    
+    $('#summary-auto-attempts').text("Auto Attempts: " + auto_attempts);
+    $('#summary-wreckage').text("Tipped Wreckage: " + (wreckage_knocked_over == 4 ? "Many" : wreckage_knocked_over));
+    $('#summary-auto-crossings').text("Auto Crossings: " + auto_crosses);
+    $('#summary-crosses').text("Crosses: " + crosses);
+    $('#summary-crosses-with-part').text("Crosses w/ Part: " + crosses_with_part);
+    $('#summary-blue-parts').text("Blue Spare Parts: " + blue_spare_parts);
+    $('#summary-red-parts').text("Red Spare Parts: " + red_spare_parts);
+    switch (endgame_generator_state) {
+        case EndgameState.OneContacting:
+            $('#summary-endgame-generator-state').text("1 Robot Contacting");
+            break;
+        case EndgameState.TwoContacting:
+            $('#summary-endgame-generator-state').text("2 Robots Contacting");
+            break;
+        case EndgameState.OneBalanced:
+            $('#summary-endgame-generator-state').text("1 Robot Balanced");
+            break;
+        case EndgameState.TwoBalanced:
+            $('#summary-endgame-generator-state').text("2 Robots Balanced");
+            break;
+        default:
+            $('#summary-endgame-generator-state').text("No Contact or Balance");
+            break;
+    }
+    $('#summary-fouls').text("Fouls: " + fouls);
+    $('#summary-tech-fouls').text("Tech Fouls: " + tech_fouls);
+    
+    toPage("summary");
+}
+
+function inc_auto_attempts() {
+    auto_attempts++;
+    if (auto_attempts > 2) {
+        auto_attempts = 2;
+    }
+    $('#summary-auto-attempts').text("Auto Attempts: " + auto_attempts);
+}
+
+function dec_auto_attempts() {
+    auto_attempts--;
+    if (auto_attempts < 0) {
+        auto_attempts = 0;
+    }
+    $('#summary-auto-attempts').text("Auto Attempts: " + auto_attempts);
+}
+
+function inc_wreckage() {
+    wreckage_knocked_over++;
+    if (wreckage_knocked_over == 2) {
+        wreckage_knocked_over = 3;
+    }
+    if (wreckage_knocked_over > 3) {
+        wreckage_knocked_over = 4;
+    }
+    $('#summary-wreckage').text("Tipped Wreckage: " + (wreckage_knocked_over == 4 || wreckage_knocked_over == null ? "Many" : wreckage_knocked_over));
+}
+
+function dec_wreckage() {
+    wreckage_knocked_over--;
+    if (wreckage_knocked_over == 2) {
+        wreckage_knocked_over = 1;
+    }
+    if (wreckage_knocked_over <  0) { 
+        wreckage_knocked_over = 0;
+    }
+    $('#summary-wreckage').text("Tipped Wreckage: " + (wreckage_knocked_over == 4 || wreckage_knocked_over == null ? "Many" : wreckage_knocked_over));
+}
+
+function inc_auto_crossings() {
+    auto_crosses++;
+    if (auto_crosses > 2) {
+        auto_crosses = 2;
+    }
+    $('#summary-auto-crossings').text("Auto Crossings: " + auto_crosses);
+}
+
+function dec_auto_crossings() {
+    auto_crosses--;
+    if (auto_crosses < 0) {
+        auto_crosses = 0;
+    }
+    $('#summary-auto-crossings').text("Auto Crossings: " + auto_crosses);
+}
+
+function inc_crosses() {
+    crosses++;
+    $('#summary-crosses').text("Crosses: " + crosses);
+}
+
+function dec_crosses() {
+    crosses--;
+    if (crosses < 0) {
+        crosses = 0;
+    }
+    $('#summary-crosses').text("Crosses: " + crosses);
+}
+
+function inc_crosses_with_part() {
+    crosses_with_part++;
+    $('#summary-crosses-with-part').text("Crosses w/ Part: " + crosses_with_part);
+}
+
+function dec_crosses_with_part() {
+    crosses_with_part--;
+    if (crosses_with_part < 0) {
+        crosses_with_part = 0;
+    }
+    $('#summary-crosses-with-part').text("Crosses w/ Part: " + crosses_with_part);
+}
+
+function inc_red_parts() {
+    red_spare_parts++;
+    if (red_spare_parts > 15) {
+        red_spare_parts = 15;
+    }
+    $('#summary-red-parts').text("Red Spare Parts: " + red_spare_parts);
+}
+
+function dec_red_parts() {
+    red_spare_parts--;
+    if (red_spare_parts < 0) {
+        red_spare_parts = 0;
+    }
+    $('#summary-red-parts').text("Red Spare Parts: " + red_spare_parts);
+}
+
+function inc_blue_parts() {
+    blue_spare_parts++;
+    if (blue_spare_parts > 15) {
+        blue_spare_parts = 15;
+    }
+    $('#summary-blue-parts').text("Blue Spare Parts: " + blue_spare_parts);
+}
+
+function dec_blue_parts() {
+    blue_spare_parts--;
+    if (blue_spare_parts < 0) {
+        blue_spare_parts = 0;
+    }
+    $('#summary-blue-parts').text("Blue Spare Parts: " + blue_spare_parts);
+}
+
+function inc_endgame_state() {
+    endgame_generator_state++;
+    if (endgame_generator_state > 4) {
+        endgame_generator_state = 4;
+    }
+    
+    switch (endgame_generator_state) {
+        case EndgameState.OneContacting:
+            $('#summary-endgame-generator-state').text("1 Robot Contacting");
+            break;
+        case EndgameState.TwoContacting:
+            $('#summary-endgame-generator-state').text("2 Robots Contacting");
+            break;
+        case EndgameState.OneBalanced:
+            $('#summary-endgame-generator-state').text("1 Robot Balanced");
+            break;
+        case EndgameState.TwoBalanced:
+            $('#summary-endgame-generator-state').text("2 Robots Balanced");
+            break;
+        case 0:
+            $('#summary-endgame-generator-state').text("No Contact or Balance");
+            break;
+    }
+}
+
+function dec_endgame_state() {
+    endgame_generator_state--;
+    
+    if (endgame_generator_state < 0) {
+        endgame_generator_state = 0;
+    }
+    
+    switch (endgame_generator_state) {
+        case EndgameState.OneContacting:
+            $('#summary-endgame-generator-state').text("1 Robot Contacting");
+            break;
+        case EndgameState.TwoContacting:
+            $('#summary-endgame-generator-state').text("2 Robots Contacting");
+            break;
+        case EndgameState.OneBalanced:
+            $('#summary-endgame-generator-state').text("1 Robot Balanced");
+            break;
+        case EndgameState.TwoBalanced:
+            $('#summary-endgame-generator-state').text("2 Robots Balanced");
+            break;
+        case 0:
+            $('#summary-endgame-generator-state').text("No Contact or Balance");
+            break;
+    }
+}
+
+function inc_fouls() {
+    fouls++;
+    $('#summary-fouls').text("Fouls: " + fouls);
+}
+
+function dec_fouls() {
+    fouls--;
+    if (fouls < 0) {
+        fouls = 0;
+    }
+    $('#summary-fouls').text("Fouls: " + fouls);
+}
+
+function inc_tech_fouls() {
+    tech_fouls++;
+    $('#summary-tech-fouls').text("Tech Fouls: " + tech_fouls);
+}
+
+function dec_tech_fouls() {
+    tech_fouls--;
+    if (tech_fouls < 0) {
+        tech_fouls = 0;
+    }
+    $('#summary-tech-fouls').text("Tech Fouls: " + tech_fouls);
 }
             /*******************************************************************************
  * Copyright (c) 2013, 2016 IBM Corp.
@@ -699,7 +951,7 @@ set qos(a){this._setQos(a)},get retained(){return this._getRetained()},set retai
                     <div id="auto-4-buttons">
                         <button class="circle-button wreckage highlightable" onclick="wreckage_knocked_over = toggle_group_button(this, 0, 'wreckage');">0</button>
                         <button class="circle-button wreckage highlightable" onclick="wreckage_knocked_over = toggle_group_button(this, 1, 'wreckage');">1</button>
-                        <button class="circle-button wreckage highlightable" onclick="wreckage_knocked_over = toggle_group_button(this, 2, 'wreckage');">2</button>
+                        <button class="circle-button wreckage highlightable" onclick="wreckage_knocked_over = toggle_group_button(this, 3, 'wreckage');">3</button>
                         <button class="circle-button wreckage highlightable" onclick="wreckage_knocked_over = toggle_group_button(this, -1, 'wreckage');"><i class="fas fa-times"></i></button>
                     </div>
                 </td>
@@ -745,7 +997,7 @@ set qos(a){this._setQos(a)},get retained(){return this._getRetained()},set retai
                     <button class="cross" onclick="count_cross();">Cross</button>
                 </td>
                 <td>
-                    <button class="cross_with_fuel" onclick="count_cross_with_fuel();">Cross<br>w/ Fuel</button>
+                    <button class="cross_with_part" onclick="count_cross_with_part();">Cross<br>w/ Part</button>
                 </td>
             </tr>
             <tr style="height: 12em;">
@@ -813,7 +1065,7 @@ set qos(a){this._setQos(a)},get retained(){return this._getRetained()},set retai
         </table>
     </div>
     <div class="bottom-sticky">
-        <button class="next-page" onclick="toPage('summary');">SUMMARY<i class="fas fa-forward"></i></button>
+        <button class="next-page" onclick="goto_summary();">SUMMARY<i class="fas fa-forward"></i></button>
         <button class="undo" onclick="undo();" style="display: none;"><i class="fas fa-undo"></i></button>
     </div>
 </div>
@@ -822,77 +1074,77 @@ set qos(a){this._setQos(a)},get retained(){return this._getRetained()},set retai
         <h1>Match # Summary</h1>
         <ul>
             <li>
-                <p>Auto attempts: #</p>
+                <p id="summary-auto-attempts">Auto attempts: #</p>
                 <div style="margin-right: 1.5em">
-                    <button class="left">-</button>
-                    <button class="right">+</button>
+                    <button class="left" onclick="dec_auto_attempts();">-</button>
+                    <button class="right" onclick="inc_auto_attempts();">+</button>
                 </div>
             </li>
             <li>
-                <p>Wreckage: #</p>
+                <p id="summary-wreckage">Wreckage: #</p>
                 <div style="margin-right: 1.5em">
-                    <button class="left">-</button>
-                    <button class="right">+</button>
+                    <button class="left" onclick="dec_wreckage();">-</button>
+                    <button class="right" onclick="inc_wreckage();">+</button>
                 </div>
             </li>
             <li>
-                <p>Auto Crossings: #</p>
+                <p id="summary-auto-crossings">Auto Crossings: #</p>
                 <div style="margin-right: 1.5em">
-                    <button class="left">-</button>
-                    <button class="right">+</button>
-                </div>
-            </li>
-            <hr>
-
-            <li>
-                <p>Crosses: #</p>
-                <div style="margin-right: 1.5em">
-                    <button class="left">-</button>
-                    <button class="right">+</button>
-                </div>
-            </li>
-            <li>
-                <p>Crosses w/ part: #</p>
-                <div style="margin-right: 1.5em">
-                    <button class="left">-</button>
-                    <button class="right">+</button>
-                </div>
-            </li>
-            <li>
-                <p>Blue Spare Parts: #</p>
-                <div style="margin-right: 1.5em">
-                    <button class="left">-</button>
-                    <button class="right">+</button>
-                </div>
-            </li>
-            <li>
-                <p>Red Spare Parts: #</p>
-                <div style="margin-right: 1.5em">
-                    <button class="left">-</button>
-                    <button class="right">+</button>
-                </div>
-            </li>
-            <li>
-                <p>1 Robot Parcked</p>
-                <div style="margin-right: 1.5em">
-                    <button class="left">-</button>
-                    <button class="right">+</button>
+                    <button class="left" onclick="dec_auto_crossings();">-</button>
+                    <button class="right" onclick="inc_auto_crossings();">+</button>
                 </div>
             </li>
             <hr>
 
             <li>
-                <p>Fouls: #</p>
+                <p id="summary-crosses">Crosses: #</p>
                 <div style="margin-right: 1.5em">
-                    <button class="left">-</button>
-                    <button class="right">+</button>
+                    <button class="left" onclick="dec_crosses();">-</button>
+                    <button class="right" onclick="inc_crosses();">+</button>
                 </div>
             </li>
             <li>
-                <p>Tech Fouls: #</p>
+                <p id="summary-crosses-with-part">Crosses w/ part: #</p>
                 <div style="margin-right: 1.5em">
-                    <button class="left">-</button>
-                    <button class="right">+</button>
+                    <button class="left" onclick="dec_crosses_with_part();">-</button>
+                    <button class="right" onclick="inc_crosses_with_part();">+</button>
+                </div>
+            </li>
+            <li>
+                <p id="summary-blue-parts">Blue Spare Parts: #</p>
+                <div style="margin-right: 1.5em">
+                    <button class="left" onclick="dec_blue_spare_parts();">-</button>
+                    <button class="right" onclick="inc_blue_spare_parts();">+</button>
+                </div>
+            </li>
+            <li>
+                <p id="summary-red-parts">Red Spare Parts: #</p>
+                <div style="margin-right: 1.5em">
+                    <button class="left" onclick="dec_red_spare_parts();">-</button>
+                    <button class="right" onclick="inc_red_spare_parts();">+</button>
+                </div>
+            </li>
+            <li>
+                <p id="summary-endgame-generator-state">1 Robot Parcked</p>
+                <div style="margin-right: 1.5em">
+                    <button class="left" onclick="dec_endgame_state();">-</button>
+                    <button class="right" onclick="inc_endgame_state();">+</button>
+                </div>
+            </li>
+            <hr>
+
+            <li>
+                <p id="summary-fouls">Fouls: #</p>
+                <div style="margin-right: 1.5em">
+                    <button class="left" onclick="dec_fouls();">-</button>
+                    <button class="right" onclick="inc_fouls();">+</button>
+                </div>
+            </li>
+            <li>
+                <p id="summary-tech-fouls">Tech Fouls: #</p>
+                <div style="margin-right: 1.5em">
+                    <button class="left" onclick="dec_tech_fouls();">-</button>
+                    <button class="right" onclick="inc_tech_fouls();">+</button>
                 </div>
             </li>
         </ul>
