@@ -1,4 +1,4 @@
-var end = new Date('05/03/2018 5:00 PM');
+var end = new Date('11/16/2018 10:00 PM');
 
 var _milli = 1
 var _second = 1000;
@@ -38,4 +38,7 @@ function showRemaining() {
 //    document.getElementById('countdown').innerHTML += leftPad(millis, 3) + ' seconds';
 }
 
-timer = setInterval(showRemaining, 1);
+timer = setInterval(function () { 
+    showRemaining();
+    updateProgress();
+}, 1);
