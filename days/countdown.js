@@ -41,4 +41,4 @@ function showRemaining() {
 timer = setInterval(function () { 
     showRemaining();
     updateProgress();
-}, 1);
+}, 1000);
