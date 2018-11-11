@@ -227,6 +227,15 @@ td.percent {
             transform-origin :100% 100%;
 }
 
+#visits-container {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+#visits {
+    margin-left: 5px;
+}
 
 /* body {
     background: lightgray;

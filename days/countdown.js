@@ -19,10 +19,8 @@ function showRemaining() {
     var now = new Date();
     var distance = end - now;
     if (distance < 0) {
-
-        clearInterval(timer);
-        document.getElementById('countdown').innerHTML = 'EXPIRED!';
-
+        document.getElementById('days').innerHTML = "NO";
+        document.getElementById('tagline').innerHTML = "Hmm, stop looking at this page and be with me!";
         return;
     }
     var days = Math.floor(distance / _day);
@@ -38,6 +36,7 @@ function showRemaining() {
 //    document.getElementById('countdown').innerHTML += leftPad(millis, 3) + ' seconds';
 }
 
+updateVisits();
 timer = setInterval(function () { 
     showRemaining();
     updateProgress();

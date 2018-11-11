@@ -23,6 +23,9 @@ function updateProgress() {
         var progress = now - start;
         
         var days = Math.floor(distance / _day);
+        if (days < 0) {
+            days = 0;
+        }
 
         document.getElementById('progress' + i).getElementsByClassName("days")[0].innerHTML = days + " days";
         document.getElementById('progress' + i).getElementsByClassName("percent")[0].innerHTML = Math.round(100 * (progress / total)) + "%";
