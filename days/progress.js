@@ -28,7 +28,7 @@ function updateProgress() {
         }
 
         document.getElementById('progress' + i).getElementsByClassName("days")[0].innerHTML = days + " days";
-        document.getElementById('progress' + i).getElementsByClassName("percent")[0].innerHTML = Math.round(100 * (progress / total)) + "%";
-        document.getElementById('progress' + i).getElementsByClassName("bar")[0].childNodes[0].style.width = (100 * (progress / total)) + '%';
+        document.getElementById('progress' + i).getElementsByClassName("percent")[0].innerHTML = Math.min(100, Math.round(100 * (progress / total))) + "%";
+        document.getElementById('progress' + i).getElementsByClassName("bar")[0].childNodes[0].style.width = Math.min(100, (100 * (progress / total))) + '%';
     }
 }
