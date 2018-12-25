@@ -5,8 +5,8 @@ var progress4Start = new Date('06/12/2016 06:00 PM');
 var progress5Start = new Date('06/12/2016 06:00 PM');
 var starts = [progress1Start, progress2Start, progress3Start, progress4Start, progress5Start]
 
-var progress1End = new Date('12/19/2018 10:00 PM');
-var progress2End = new Date('12/21/2018 10:00 PM');
+var progress1End = new Date('12/19/2018 4:00 PM');
+var progress2End = new Date('12/19/2018 4:00 PM');
 var progress3End = new Date('05/03/2019 10:00 PM');
 var progress4End = new Date('05/03/2020 10:00 PM');
 var progress5End = new Date('06/12/2019 10:00 PM');
