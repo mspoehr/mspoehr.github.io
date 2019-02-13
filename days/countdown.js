@@ -37,6 +37,8 @@ function showRemaining() {
 }
 
 updateVisits();
+showRemaining();
+updateProgress();
 timer = setInterval(function () { 
     showRemaining();
     updateProgress();
