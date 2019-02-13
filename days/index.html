@@ -1,5 +1,4 @@
 <html>
-
 <head>
     <title>How much longer?</title>
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
@@ -9,9 +8,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://cdn2.iconfinder.com/data/icons/finance-solid-icons-vol-3/48/146-512.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.9">
 
 </head>
-
 <body>
     <div id="heart"></div>
     <div id="container">
@@ -26,42 +25,42 @@
             </p>
         </div>
         <h2>How much longer until...</h2>
-        <table>
-            <tr id="progress1" class="progress">
-                <th>The next time I see you</th>
-                <td class="days">###</td>
-                <td class="percent">##%</td>
-                <td class="bar"><div></div></td>
-            </tr>
-            <tr id="progress2" class="progress">
-                <th>This semester</th>                
-                <td class="days">###</td>
-                <td class="percent">##%</td>
-                <td class="bar"><div></div></td>
-            </tr>
-            <tr id="progress3" class="progress">
-                <th>This year</th>
-                <td class="days">###</td>
-                <td class="percent">##%</td>
-                <td class="bar"><div></div></td>
-            </tr>
-            <tr id="progress4" class="progress">
-                <th>Long distance is done</th>
-                <td class="days">###</td>
-                <td class="percent">##%</td>
-                <td class="bar"><div></div></td>
-            </tr>
-            <tr id="progress5" class="progress"> 
-                <th>Halfway day</th>
-                <td class="days">###</td>
-                <td class="percent">##%</td>
-                <td class="bar"><div></div></td>
-            </tr>
-        </table>
+        <div>
+            <div id="progress1" class="progress">
+                <div class="label">The next time I see you</div>
+                <div class="days">###</div>
+                <div class="percent">##%</div>
+                <div class="bar"><div></div></div>
+            </div>
+            <div id="progress2" class="progress">
+                <div class="label">This semester</div>                
+                <div class="days">###</div>
+                <div class="percent">##%</div>
+                <div class="bar"><div></div></div>
+            </div>
+            <div id="progress3" class="progress">
+                <div class="label">This year</div>
+                <div class="days">###</div>
+                <div class="percent">##%</div>
+                <div class="bar"><div></div></div>
+            </div>
+            <div id="progress4" class="progress">
+                <div class="label">Long distance is done</div>
+                <div class="days">###</div>
+                <div class="percent">##%</div>
+                <div class="bar"><div></div></div>
+            </div>
+            <div id="progress5" class="progress"> 
+                <div class="label">Halfway day</div>
+                <div class="days">###</div>
+                <div class="percent">##%</div>
+                <div class="bar"><div></div></div>
+            </div>
+        </div>
     </div>
     <div id="visits-container">
         <i class="fas fa-eye"></i><span id="visits">&nbsp;&nbsp;</span>
     </div>
+    <div style="clear: both;"></div>
 </body>
-
 </html>
