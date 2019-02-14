@@ -4,13 +4,12 @@
 
 body {
     margin: 0;
-    background: #4a4d79;
+    background: #ff0081;
     color: white;
     text-align: center;
     padding: 10px;
 
-
-    background: linear-gradient(221deg, #4a4d79, #282a48, #676a8b);
+    background: linear-gradient(221deg, #ff0081, #c55ebd, #b300ad);
     background-size: 600% 600%;
 
     -webkit-animation: gradient 29s ease infinite;
@@ -33,8 +32,8 @@ body {
     width: 250px;
     background: white;
     border-radius: 50%;
-    border: 5px solid orange;
-    color: orange;
+    border: 5px solid hotpink;
+    color: hotpink;
     text-align: center;
     display: inline-block;
 }
