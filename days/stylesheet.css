@@ -237,7 +237,7 @@ tr:hover {
 #heart {
     z-index: -1;
     opacity: 0.1;
-    position: absolute;
+    position: fixed;
     left: -20%;
     bottom: 0;
     width: 80%;
