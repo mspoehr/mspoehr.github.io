@@ -1,100 +1,210 @@
 <html>
-    <head>
-        <title>Housing Furnishings Test</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            h1 {
-                margin: 0;
-                margin-right: 30px;
+
+<head>
+    <title>Housing Furnishings Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            font-family: sans-serif;
+        }
+
+        .furniture h1 {
+            margin: 0;
+            margin-right: 10px;
+        }
+
+        .furniture img {
+            width: 100%;
+            max-width: 300px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .furniture img {
+                max-width: none !important;
             }
-            img {
-                width: 100%;
-                max-width: 300px;
-            }
-            @media only screen and (max-width: 600px) {
-                img {
-                    max-width: none !important;
-                }
-            }
-        </style>
-    </head>
-    <body style="    background: #DDD;
+        }
+
+        .furniture .item {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            align-items: start;
+        }
+
+        .furniture .item>table {
+            margin: 10px;
+        }
+
+        .furniture .item>table td:first-child {
+            padding-right: 10px;
+        }
+
+        .furniture .image {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .furniture .image .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .furniture .image .expand {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.5);
+            bottom: 0;
+            right: 0;
+        }
+
+        .furniture .image .overlay {
+            color: white;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+
+        .furniture .image:hover>.overlay {
+            display: flex;
+        }
+
+        .furniture .image:hover>.expand {
+            display: none;
+        }
+    </style>
+</head>
+
+<body style="    background: #DDD;
     margin: 0;
     width: 100%;
     height: 100%;">
-        <div style="    background: white;
+    <div style="    background: white;
         min-height: 100vh;
         max-width: 950px;
         margin: 0 auto;
-        padding: 20px;">
+        padding: 20px;"
+        class="furniture">
+        <p>Dimensions are expressed in Height x Width x Depth.</p>
+        <table>
+            <tr>
+                <td>
+                    <h1>Dresser</h1>
+                </td>
+                <td>&mdash; 30" x 36" x 22"</td>
+            </tr>
+        </table>
+        <div class="item">
+            <a href="https://mymichigantechmirror.mtu.edu/EAS_HousingInfo-portlet/images/roomfurniture/deskdresser.jpg">
+                <div class="image">
+                    <div class="overlay">
+                        <p>Click to expand</p>
+                    </div>
+                    <img src="https://mymichigantechmirror.mtu.edu/EAS_HousingInfo-portlet/images/roomfurniture/deskdresser.jpg">
+                    <div class="expand"><img src="baseline_fullscreen_white_18dp.png"></div>
+                </div>
+            </a>
             <table>
                 <tr>
-                    <td><h1>Dresser</h1></td>
-                    <td>H x W x L</td>
+                    <td>Drawers (x3)</td>
+                    <td>6" x 32" x 19"</td>
                 </tr>
             </table>
-            <div style="display: flex; flex-wrap: wrap; margin-bottom: 20px;">
-                <img src="#" width="300" height="200" >
-                <table>
-                    <tr><td>Drawers</td><td>H' x W' x L'</td></tr>
-                </table>
-            </div>
-            <table>
-                <tr>
-                    <td><h1>Desk</h1></td>
-                    <td>H x W x L</td>
-                </tr>
-            </table>
-            <div style="display: flex; flex-wrap: wrap;  margin-bottom: 20px;">
-                <img src="#" width="300" height="200" >
-                <table>
-                    <tr>
-                        <td>Keyboard Drawer</td>
-                        <td>H x W x L</td>
-                    </tr>
-                    <tr>
-                        <td>Small Drawers</td>
-                        <td>H x W x L</td>
-                    </tr>
-                    <tr>
-                        <td>Large Drawer</td>
-                        <td>H x W x L</td>
-                    </tr>
-                </table>
-            </div>
-            <table>
-                <tr>
-                    <td><h1>Loft Bed</h1></td>
-                    <td>H x W x L</td>
-                </tr>
-            </table>
-            <div style="display: flex; flex-wrap: wrap;  margin-bottom: 20px;">
-                <img src="#" width="300" height="200" >
-                <table>
-                    <tr>
-                        <td>Space Under Desk</td>
-                        <td>H x W x D</td>
-                    </tr>
-                    <tr>
-                        <td>Mattress (Extra Long Twin)</td>
-                        <td>H x W x D</td>
-                    </tr>
-                    <tr>
-                        <td>Chair</td>
-                        <td>Seat- #, Back- #, Depth- #</td>
-                    </tr>
-                    <tr>
-                        <td>Space Under Bed</td>
-                        <td>5'</td>
-                    </tr>
-                </table>
-            </div>
-            <h1>Closet</h1>
-            <div style="display: flex; flex-wrap: wrap;">
-                <img src="#" width="300" height="200" >
-            </div>
-            <p>Every room in DHH comes with closet. Dimensions vary.</p>
         </div>
-    </body>
-</html>
+        <table>
+            <tr>
+                <td>
+                    <h1>Desk</h1>
+                </td>
+                <td>&mdash; 30" x 42" x 22"</td>
+            </tr>
+        </table>
+        <div class="item">
+            <a href="https://mymichigantechmirror.mtu.edu/EAS_HousingInfo-portlet/images/roomfurniture/deskdresser.jpg">
+                <div class="image">
+                    <div class="overlay">
+                        <p>Click to expand</p>
+                    </div>
+                    <img src="https://mymichigantechmirror.mtu.edu/EAS_HousingInfo-portlet/images/roomfurniture/deskdresser.jpg ">
+                    <div class="expand"><img src="baseline_fullscreen_white_18dp.png"></div>
+                </div>
+            </a>
+            <table>
+                <tr>
+                    <td>Keyboard Drawer</td>
+                    <td>3" x 24" x 19"</td>
+                </tr>
+                <tr>
+                    <td>Small Drawers (x2)</td>
+                    <td>4" x 12" x 19"</td>
+                </tr>
+                <tr>
+                    <td>Large Drawer</td>
+                    <td>12" x 12" x 19"</td>
+                </tr>
+            </table>
+        </div>
+        <table>
+            <tr>
+                <td>
+                    <h1>Loft Bed</h1>
+                </td>
+                <td>&mdash; 69" x 86" x 39"</td>
+            </tr>
+        </table>
+        <div class="item">
+            <a href="https://mymichigantechmirror.mtu.edu/EAS_HousingInfo-portlet/images/roomfurniture/loftbed.jpg">
+                <div class="image">
+                    <div class="overlay">
+                        <p>Click to expand</p>
+                    </div>
+                    <img src="https://mymichigantechmirror.mtu.edu/EAS_HousingInfo-portlet/images/roomfurniture/loftbed.jpg">
+                    <div class="expand"><img src="baseline_fullscreen_white_18dp.png"></div>
+                </div>
+            </a>
+            <table>
+                <tr>
+                    <td>Space under desk</td>
+                    <td>24" x 24" x 20"</td>
+                </tr>
+                <tr>
+                    <td>Mattress (Extra Long Twin)</td>
+                    <td>80" x 37" x 22"</td>
+                </tr>
+                <tr>
+                    <td>Chair</td>
+                    <td>34" x ?? x 22"</td>
+                </tr>
+                <tr>
+                    <td>Chair seat height</td>
+                    <td>19"</td>
+                </tr>
+                <tr>
+                    <td>Space under bed</td>
+                    <td>60"</td>
+                </tr>
+            </table>
+        </div>
+        <h1>Closet</h1>
+        <div class="item">
+            <a href="https://mymichigantechmirror.mtu.edu/EAS_HousingInfo-portlet/images/roomfurniture/dhhcloset-thumb.jpg">
+                <div class="image">
+                    <div class="overlay">
+                        <p>Click to expand</p>
+                    </div>
+                    <img src="https://www.mtu.edu/housing/options/undergraduate/dhh/images/dhhcloset-thumb.jpg">
+                    <div class="expand"><img src="baseline_fullscreen_white_18dp.png"></div>
+                </div>
+            </a>
+        </div>
+        <p>Every room in DHH comes with closet. Dimensions vary.</p>
+    </div>
+</body>
 
+</html>
