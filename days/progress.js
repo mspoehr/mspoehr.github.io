@@ -1,14 +1,14 @@
-var progress1Start = new Date('01/13/2019 12:00 PM');
+var progress1Start = new Date('03/15/2019 9:00 AM');
 var progress2Start = new Date('01/13/2019 12:00 PM');
 var progress3Start = new Date('09/01/2018 12:00 PM');
 var progress4Start = new Date('06/12/2016 06:00 PM');
 var progress5Start = new Date('06/12/2016 06:00 PM');
 var starts = [progress1Start, progress2Start, progress3Start, progress4Start, progress5Start]
 
-var progress1End = new Date('03/08/2019 5:00 PM');
-var progress2End = new Date('05/03/2019 5:00 PM');
-var progress3End = new Date('05/03/2019 5:00 PM');
-var progress4End = new Date('05/03/2020 5:00 PM');
+var progress1End = new Date('05/03/2019 1:00 PM');
+var progress2End = new Date('05/03/2019 1:00 PM');
+var progress3End = new Date('05/03/2019 1:00 PM');
+var progress4End = new Date('05/03/2020 1:00 PM');
 var progress5End = new Date('06/12/2019 12:00 AM');
 var ends = [progress1End, progress2End, progress3End, progress4End, progress5End]
 
