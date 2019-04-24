@@ -118,8 +118,6 @@ tr:hover {
 
 .percent {
     padding: 0 5px 0 25px;
-    width: 35px;
-    text-align: right;
 }
 
 #progress1 .bar div {
@@ -299,4 +297,16 @@ tr:hover {
         right: unset;
         float: right;
     }
+}
+
+#finished
+{
+    margin-top: 50%;
+    display: none;
+    text-align: center;
+}
+
+#finished h1
+{
+    margin: 0;
 }

@@ -36,10 +36,12 @@ function showRemaining() {
 //    document.getElementById('countdown').innerHTML += leftPad(millis, 3) + ' seconds';
 }
 
+checkFinished(false)
 updateVisits();
 showRemaining();
 updateProgress();
 timer = setInterval(function () { 
+    checkFinished(true);
     showRemaining();
     updateProgress();
 }, 1000);

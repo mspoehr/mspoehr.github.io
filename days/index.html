@@ -2,6 +2,7 @@
 <head>
     <title>How much longer?</title>
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <script src="finish.js" defer></script>
     <script src="progress.js" defer></script>
     <script src="visits.js" defer></script>
     <script src="countdown.js" defer></script>
@@ -25,8 +26,13 @@
             </p>
             <p style="margin: -5px 0 -40px 0; font-size: 30px">❤❤❤❤❤</p>
         </div>
-        <h2>How much longer until...</h2>
-        <div>
+        <div id="finished">
+            <h1>It's over.</h1>
+            <h1>No more counting...</h1>
+            <h1>Ever.</h1>
+        </div>
+        <h2 id="table-title">How much longer until...</h2>
+        <div id="progress-container">
             <div id="progress1" class="progress">
                 <div class="label">The next time I see you</div>
                 <div class="days">###</div>
