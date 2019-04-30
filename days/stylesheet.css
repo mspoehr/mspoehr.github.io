@@ -118,6 +118,8 @@ tr:hover {
 
 .percent {
     padding: 0 5px 0 25px;
+    width: 42px;
+    text-align: right;
 }
 
 #progress1 .bar div {
