@@ -1,12 +1,131 @@
 <html>
     <head>
-        <title>Michael Spoehr</title>
+        <title>Cymbre & Michael Are Getting Married!</title>
         <link rel="stylesheet" href="stylesheet.css" type="text/css">
         <link rel="icon" type="image/x-icon" href="icon.jpg" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+    <script src="scripts/countdown.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        $(window).scroll(function() {
+        if ($(document).scrollTop() > 50) {
+        $('nav').addClass('shrink');
+        } else {
+        $('nav').removeClass('shrink');
+        }
+        });
+        
+        
+        function currentYPosition() {
+            // Firefox, Chrome, Opera, Safari
+            if (self.pageYOffset) return self.pageYOffset;
+            // Internet Explorer 6 - standards mode
+            if (document.documentElement && document.documentElement.scrollTop)
+                return document.documentElement.scrollTop;
+            // Internet Explorer 6, 7 and 8
+            if (document.body.scrollTop) return document.body.scrollTop;
+            return 0;
+        }
+
+
+        function elmYPosition(eID) {
+            var elm = document.getElementById(eID);
+            var y = elm.offsetTop;
+            var node = elm;
+            while (node.offsetParent && node.offsetParent != document.body) {
+                node = node.offsetParent;
+                y += node.offsetTop;
+            } return y;
+        }
+
+
+        function smoothScroll(eID) {
+            var startY = currentYPosition();
+            var stopY = elmYPosition(eID) - 51;
+            var distance = stopY > startY ? stopY - startY : startY - stopY;
+            if (distance < 100) {
+                scrollTo(0, stopY); return;
+            }
+            var speed = Math.round(distance / 100);
+            if (speed >= 20) speed = 20;
+            var step = Math.round(distance / 25);
+            var leapY = stopY > startY ? startY + step : startY - step;
+            var timer = 0;
+            if (stopY > startY) {
+                for ( var i=startY; i<stopY; i+=step ) {
+                    setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
+                    leapY += step; if (leapY > stopY) leapY = stopY; timer++;
+                } return;
+            }
+            for ( var i=startY; i>stopY; i-=step ) {
+                setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
+                leapY -= step; if (leapY < stopY) leapY = stopY; timer++;
+            }
+        }
+    </script>
     <body>
-        <div>
-            <h1>Nothing here right now!</h1>
+        <div id="top-info">
+            <h1>Cymbre & Michael</h1>
+            <h2>6.12.21</h2>
+        </div>
+        <div id="top">
+            <img src="images/main.jpg" style="position: relative; top: 100px;"/>
+            <div id="pull-up" onclick="smoothScroll('second');">
+                <i class="fas fa-angle-double-down"></i>
+                <h4>More information</h4>
+            </div>
+        </div>
+        <div id="second" class="angle down" style="background: white;">
+            <div class="container">
+                <div style="width: 100%;">
+                    <div id="time-remaining"></div>
+                    <i class="fas fa-heart" style="line-height: 45px;"></i>
+                    <div>...but who's counting?</div>
+                </div>
+            </div>
+        </div>
+        <div id="third" class="angle up" style="background: #ECEFF8;">
+            <div class="container block">
+                <h2>
+                    <i class="fa fa-info-circle"></i>
+                    <span>Details</span>
+                </h2>
+                <ul style="list-style: none;">
+                    <li class="detail-item"><div>WHEN</div>6/12/2021</li>
+                    <li class="detail-item muted"><div>WHERE</div>Stay tuned...</li>
+                    <li class="detail-item muted"><div>RSVP</div>Stay tuned...</li>
+                    <li class="detail-item muted"><div>REGISTRY</div>Stay tuned...</li>
+                    <li class="detail-item muted"><div>DRESS CODE</div>Stay tuned...</li>
+                </ul>
+            </div>
+        </div>
+        <div id="fourth" class="angle down" style="background-color: #12795D;">
+            <div style="overflow: hidden;">
+                <div class="container">
+                    <h2>
+                        <i class="fa fa-map-signs"></i>
+                        <span>Our Story</span>
+                    </h2>
+                    <div style="position: relative;">
+                        <img src="images/story.svg" />
+                        <img src="images/story_continues.svg" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="ring">
+            <img src="images/ring_cropped.jpg" />
+        </div>
+        <div id="fifth" class="angle up" style="background-color: transparent;">
+            <div class="container block">
+                <h2>
+                    <i class="fa fa-camera-retro"></i>
+                    <span>Gallery</span>
+                </h2>
+                <a href="#">View more <i class="fa fa-arrow-right"></i></a>
+            </div>
         </div>
     </body>
 </html>

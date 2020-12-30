@@ -1,4 +1,4 @@
-var end = new Date('05/03/2019 01:00 PM');
+var end = new Date('06/12/2021 11:00 AM');
 
 var _milli = 1
 var _second = 1000;
@@ -19,8 +19,7 @@ function showRemaining() {
     var now = new Date();
     var distance = end - now;
     if (distance < 0) {
-        document.getElementById('days').innerHTML = "NO";
-        document.getElementById('tagline').innerHTML = "Hmm, stop looking at this page and be with me!";
+        document.getElementById('time-remaining').innerHTML = "It's happening!!!";
         return;
     }
     var days = Math.floor(distance / _day);
@@ -29,19 +28,10 @@ function showRemaining() {
     var seconds = Math.floor((distance % _minute) / _second)
     var millis = Math.floor((distance % _second));
 
-    document.getElementById('days').innerHTML = days;
-    document.getElementById('hours').innerHTML = leftPad(hours, 2);
-    document.getElementById('minutes').innerHTML = leftPad(minutes, 2);
-    document.getElementById('seconds').innerHTML = leftPad(seconds, 2);
-//    document.getElementById('countdown').innerHTML += leftPad(millis, 3) + ' seconds';
+    document.getElementById('time-remaining').innerHTML = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`
 }
 
-checkFinished(false)
-updateVisits();
 showRemaining();
-updateProgress();
-timer = setInterval(function () { 
-    checkFinished(true);
+timer = setInterval(function () {
     showRemaining();
-    updateProgress();
 }, 1000);
