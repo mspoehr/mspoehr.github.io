@@ -1,5 +1,5 @@
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -17,7 +17,7 @@ h6,
 span,
 i,
 a {
-  font-family: 'Amatic SC';
+  font-family: "Amatic SC";
   color: inherit;
 }
 
@@ -40,6 +40,19 @@ a:hover {
   background-size: 4px 50px;
   color: #004890;
   border-radius: 0.25em;
+}
+
+a.dark {
+  color: #004890;
+  background: linear-gradient(to bottom, #004890 0%, #004890 100%);
+  background-position: 0 100%;
+  background-repeat: repeat-x;
+  background-size: 3px 3px;
+  font-family: "Roboto", sans-serif;
+}
+a.dark:hover {
+  color: white;
+  background-size: 4px 50px;
 }
 
 #top {
@@ -195,7 +208,7 @@ a:hover {
   height: auto;
 }
 
-#our-story img:last-of-type{
+#our-story img:last-of-type {
   position: absolute;
   width: 100%;
   height: auto;
@@ -218,7 +231,6 @@ a:hover {
   }
 }
 
-
 .details {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -239,7 +251,7 @@ a:hover {
 }
 
 #details-background {
-  background-image: url('images/tree_background.png');
+  background-image: url("images/tree_background.png");
   position: absolute;
   left: 0;
   right: 0;
@@ -327,7 +339,7 @@ a:hover {
 }
 
 .expand {
-  transition: font-size, .3s;
+  transition: font-size, 0.3s;
 }
 
 .expand:hover {
