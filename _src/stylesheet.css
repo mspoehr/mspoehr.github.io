@@ -186,6 +186,7 @@ a.dark:hover {
 
   .leaf:first-of-type {
     align-self: flex-start;
+    transform: scaleY(-1);
   }
   .leaf:last-of-type {
     align-self: flex-end;
@@ -344,4 +345,86 @@ a.dark:hover {
 
 .expand:hover {
   font-size: 30px;
+}
+
+.rsvp-body {
+  background: #eceff8;
+  text-align: center;
+  color: #004890;
+  display: flex;
+  align-items: center;
+}
+
+.rsvp-body > .content {
+  padding: 30px;
+  width: 100%;
+}
+
+.rsvp-body h1 {
+  font-size: 5em;
+  margin-bottom: 15px;
+}
+
+.rsvp-form {
+  margin: 0 auto;
+  max-width: 600px;
+  text-align: start;
+  margin-top: 3em;
+}
+
+.rsvp-form > input, textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 1em;
+  padding: .75em;
+  font-size: 1.2em;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.rsvp-form > label {
+ font-weight: bold;
+}
+
+.accept {
+  display: flex;
+  justify-content: center;
+  margin: 1.5em 0;
+  flex-wrap: wrap;
+}
+
+.accept input {
+  margin: 10px 5px;
+}
+
+.accept > div {
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+.rsvp-form input[type="submit"] {
+  border: none;
+  background: #004890;
+  color: white;
+  font-family: "Amatic SC";
+  padding: 6px;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.rsvp-body > .image {
+  background-image: url("images/tree_background.png");
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0.05;
+  z-index: -1;
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+}
+
+.rsvp-form #status { 
+  position: absolute;
 }
