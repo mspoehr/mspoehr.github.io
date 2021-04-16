@@ -21,7 +21,7 @@ a {
   color: inherit;
 }
 
-h2 > i {
+h2 > i, h3 > i {
   margin-right: 0.4em;
 }
 
@@ -154,7 +154,6 @@ a.dark:hover {
 .angle .container {
   font-size: 20px;
   color: #004890;
-  line-height: 45px;
   text-align: center;
   padding: 30px;
   position: relative;
@@ -163,7 +162,7 @@ a.dark:hover {
   margin: 0 auto;
 }
 
-.angle .container h2 {
+.angle .container h2, h3 {
   margin-bottom: 30px;
 }
 
@@ -234,8 +233,10 @@ a.dark:hover {
 
 .details {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 130px 1fr;
   grid-gap: 0 4em;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .details > div:nth-child(odd) {
@@ -245,6 +246,7 @@ a.dark:hover {
 
 .details > div:nth-child(even) {
   text-align: left;
+  margin-bottom: 15px;
 }
 
 .details > div.muted {
@@ -268,16 +270,18 @@ a.dark:hover {
   .details {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 3fr 4fr 3fr 4fr 3fr 4fr 3fr 4fr;
-    grid-gap: 0 4em;
   }
 
   .details > div {
     text-align: center !important;
   }
+  
+  .details > div:nth-child(odd) {
+    margin-bottom: 5px;
+  }
 
   .details > div:nth-child(even) {
-    line-height: initial;
+    margin-bottom: 30px;
   }
 }
 
@@ -425,6 +429,6 @@ a.dark:hover {
   background-size: auto 100%;
 }
 
-.rsvp-form #status { 
+.rsvp-form #status {
   position: absolute;
 }
