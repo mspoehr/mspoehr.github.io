@@ -28,7 +28,7 @@
     <div class="content">
       <h1>RSVP</h1>
       <p>Please respond by May 1st</p>
-      <form class="rsvp-form">
+      <form id="rsvp-form">
         <label for="name">Names of guests</label>
         <input required type="text" id="name" name="name">
   
@@ -50,7 +50,7 @@
         <label for="comments">Comments (optional)</label>
         <textarea rows="3" id="comments" name="comments"></textarea>
   
-        <input type="submit" value="Send RSVP" onclick="return submitRsvp();">
+        <input type="submit" id="submit" value="Send RSVP" onclick="return submitRsvp();">
         <div id="status"></div>
       </form>
     </div>

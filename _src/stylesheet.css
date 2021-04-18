@@ -369,14 +369,14 @@ a.dark:hover {
   margin-bottom: 15px;
 }
 
-.rsvp-form {
+#rsvp-form {
   margin: 0 auto;
   max-width: 600px;
   text-align: start;
   margin-top: 3em;
 }
 
-.rsvp-form > input, textarea {
+#rsvp-form > input, textarea {
   display: block;
   width: 100%;
   margin-bottom: 1em;
@@ -386,7 +386,7 @@ a.dark:hover {
   border-radius: 3px;
 }
 
-.rsvp-form > label {
+#rsvp-form > label {
  font-weight: bold;
 }
 
@@ -406,7 +406,7 @@ a.dark:hover {
   font-weight: bold;
 }
 
-.rsvp-form input[type="submit"] {
+#rsvp-form input[type="submit"] {
   border: none;
   background: #004890;
   color: white;
@@ -414,6 +414,9 @@ a.dark:hover {
   padding: 6px;
   font-size: 2em;
   cursor: pointer;
+}
+#rsvp-form input[type="submit"]:disabled {
+  opacity: .8;
 }
 
 .rsvp-body > .image {
@@ -429,6 +432,6 @@ a.dark:hover {
   background-size: auto 100%;
 }
 
-.rsvp-form #status {
+#rsvp-form #status {
   position: absolute;
 }
