@@ -14,10 +14,11 @@ function submitRsvp() {
 
   const name = document.getElementById('name').value;
   const attending = document.getElementById('acceptInvite').checked;
+  const notAttending = document.getElementById('declineInvite').checked;
   const numAttending = numAttendingField.value;
   const comments = document.getElementById('comments').value;
 
-  if (!(name && attending !== undefined && numAttending && name.length > 0)) {
+  if (!(name && name.length > 5 && (attending || notAttending) && numAttending && name.length > 0)) {
     // Inputs invalid; abort and allow form validation to take over
     return true;
   }
