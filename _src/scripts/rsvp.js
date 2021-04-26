@@ -18,7 +18,7 @@ function submitRsvp() {
   const numAttending = numAttendingField.value;
   const comments = document.getElementById('comments').value;
 
-  if (!(name && name.length > 5 && (attending || notAttending) && numAttending && name.length > 0)) {
+  if (!(name && name.length >= 5 && (attending || notAttending) && numAttending)) {
     // Inputs invalid; abort and allow form validation to take over
     return true;
   }
