@@ -5,7 +5,7 @@
     "uglifyjs": "^2.4.11"
   },
   "devDependencies": {
-    "postcss": "^8.2.8",
+    "postcss": "^8.2.10",
     "postcss-cli": "^8.3.1"
   }
 }
