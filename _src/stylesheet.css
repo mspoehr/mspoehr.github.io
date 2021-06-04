@@ -351,6 +351,10 @@ a.dark:hover {
   font-size: 30px;
 }
 
+.hide-when-complete {
+  transition: opacity 0.5s;
+}
+
 .rsvp-body {
   background: #eceff8;
   text-align: center;

@@ -18,8 +18,21 @@ function leftPad(number, targetLength) {
 function showRemaining() {
   var now = new Date();
   var distance = end - now;
-  if (distance < 0) {
-    document.getElementById("time-remaining").innerHTML = "It's happening!!!";
+  if (distance < 0 && distance > -10000) {
+    const elementsToHide = document.getElementsByClassName('hide-when-complete');
+    for(let i = 0; i < elementsToHide.length; i++) {
+      elementsToHide[i].style['opacity'] = '0';
+    }
+    document.getElementsByClassName('fas fa-heart expand')[0].style['font-size'] = '50px';
+    return;
+  } else if (distance < 0) {
+    const elementsToHide = document.getElementsByClassName('hide-when-complete');
+    for(let i = 0; i < elementsToHide.length; i++) {
+      elementsToHide[i].style['display'] = 'none';
+      elementsToHide[i].innerHTML = '&nbsp;';
+    }
+    document.getElementsByClassName('fas fa-heart expand')[0].style['font-size'] = '50px';
+    clearInterval(timer);
     return;
   }
   var days = Math.floor(distance / _day);
